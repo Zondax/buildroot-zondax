@@ -5,7 +5,8 @@ IMAGES=$(MAKEFILE_DIR)/buildroot/output/images
 all:
 	@cd buildroot && make all
 
-git-update:
+git-reset:
+	@git submodule foreach --recursive git reset --hard
 	@git submodule update --init --recursive
 
 ccache-setup:
