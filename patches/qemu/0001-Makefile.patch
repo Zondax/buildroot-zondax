@@ -1,0 +1,11 @@
+--- a/pc-bios/optionrom/Makefile	2021-12-24 17:05:40.216727513 +0100
++++ b/pc-bios/optionrom/Makefile	2021-12-24 17:05:31.640394714 +0100
+@@ -8,7 +8,7 @@
+ 	@true
+ 
+ include ../../config-host.mak
+-CFLAGS = -O2 -g
++CFLAGS = -O2 -g -fcf-protection=none
+ 
+ quiet-command = $(if $(V),$1,$(if $(2),@printf "  %-7s %s\n" $2 $3 && $1, @$1))
+ cc-option = $(if $(shell $(CC) $1 -c -o /dev/null -xc /dev/null >/dev/null 2>&1 && echo OK), $1, $2)
