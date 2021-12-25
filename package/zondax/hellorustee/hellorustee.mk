@@ -22,5 +22,9 @@ define HELLORUSTEE_BUILD_CMDS
 	$(MAKE) -C $(@D)
 endef
 
+define HELLORUSTEE_INSTALL_TARGET_CMDS
+	$(INSTALL) -D -m 0755 $(HELLORUSTEE_DIR)/hello-rustee $(TARGET_DIR)/usr/bin/hello-rustee
+endef
+
 # Use generic package infrastructure
 $(eval $(generic-package))
