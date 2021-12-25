@@ -5,6 +5,9 @@ IMAGES=$(MAKEFILE_DIR)/buildroot/output/images
 all:
 	@cd buildroot && make all
 
+git-update:
+	@git submodule update --init --recursive
+
 ccache-setup:
 	@cd buildroot && make CCACHE_OPTIONS="--max-size=50G --zero-stats" ccache-options
 
