@@ -1,0 +1,12 @@
+# This is required so the package can be enabled/disabled
+config BR2_PACKAGE_HELLORUSTEE
+	bool "hellorustee"
+	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+	select BR2_PACKAGE_HOST_RUSTC
+
+	# depends on BR2_TOOLCHAIN_HAS_THREADS # pcsc-lite, libusb
+	# depends on BR2_TOOLCHAIN_GCC_AT_LEAST_4_9 # libusb
+	# depends on BR2_USE_MMU # pcsc-lite
+
+#.. now add other configuration options 
+# reference https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf

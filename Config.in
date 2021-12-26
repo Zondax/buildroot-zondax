@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/hellorustee/Config.in"
