@@ -1,8 +1,8 @@
 [submodule "buildroot"]
 	path = buildroot
 	url = https://github.com/buildroot/buildroot.git
-[submodule "buildroot-bootlin"]
-	path = buildroot-bootlin
+[submodule "buildroot-st"]
+	path = buildroot-st
 	url = https://github.com/bootlin/buildroot.git
 [submodule "external/hello-rustee"]
 	path = external/hello-rustee
