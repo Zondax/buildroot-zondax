@@ -1,2 +1,3 @@
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/hellorustee/Config.in"
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/rustc-nightly/Config.in"
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/teestatus/Config.in"
