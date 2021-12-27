@@ -1,13 +1,17 @@
 MAKEFILE_DIR := $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
 export BR2_EXTERNAL = $(MAKEFILE_DIR)
-IMAGES=$(MAKEFILE_DIR)/buildroot/output/images
-
 BUILDROOT_DIR=$(MAKEFILE_DIR)/buildroot
+
 ifeq ($(BUILDROOT), st)
 	BUILDROOT_DIR=$(MAKEFILE_DIR)/buildroot-st
 endif
 
-all:
+IMAGES=$(BUILDROOT_DIR)/output/images
+
+image_dir:
+	@ln -sfT $(IMAGES) $(MAKEFILE_DIR)/images
+
+all:image_dir
 	@cd $(BUILDROOT_DIR) && make all
 
 git-reset:
