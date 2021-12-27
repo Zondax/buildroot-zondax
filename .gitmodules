@@ -4,6 +4,7 @@
 [submodule "buildroot-bootlin"]
 	path = buildroot-bootlin
 	url = https://github.com/bootlin/buildroot.git
+    branch = st/2021.02
 [submodule "external/hello-rustee"]
 	path = external/hello-rustee
 	url = https://github.com/Zondax/hello-rustee
