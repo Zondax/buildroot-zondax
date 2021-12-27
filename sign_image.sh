@@ -71,7 +71,7 @@ fi
 if [ $? -eq 0 ]; then
     #Sign with STM32MP_SigningTool_CLI
     STM32MP_SigningTool_CLI -prvk $keysDir/$privateKey -pubk $keysDir/$publicKey -pwd $pass \
-    -bin $imageDir/tf-a-stm32mp157c-dk2.stm32 \
+    -bin $imageDir/tf-a-stm32mp157c-dk2-mx.stm32 \
     -t fsbl \
     -la 0x2ffc2500 -ep 0x2ffe4002
     if [ $? -eq 0 ]; then
@@ -83,10 +83,10 @@ if [ $? -eq 0 ]; then
             cp $imageDir/sdcard.img $imageDir/sdcard.img.bak
         fi
         # Update partition started at 34, size 256, 512 sectors
-        dd if=$imageDir/tf-a-stm32mp157c-dk2_Signed.stm32 of=$imageDir/sdcard.img bs=512 seek=34 conv=notrunc \
+        dd if=$imageDir/tf-a-stm32mp157c-dk2-mx_Signed.stm32 of=$imageDir/sdcard.img bs=512 seek=34 conv=notrunc \
         && sync
         # Update partition started at 546, size 256, 512 sectors
-        dd if=$imageDir/tf-a-stm32mp157c-dk2_Signed.stm32 of=$imageDir/sdcard.img bs=512 seek=546 conv=notrunc \
+        dd if=$imageDir/tf-a-stm32mp157c-dk2-mx_Signed.stm32 of=$imageDir/sdcard.img bs=512 seek=546 conv=notrunc \
         && sync
         #dhex $imageDir/*-mx.stm32 $imageDir/*_Signed.stm32
     else
