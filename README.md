@@ -27,6 +27,6 @@ make
 ## STM32MP157
 
 ```bash
-BUILDROOT=st make zondaxtee_stm32mp157_dk2_defconfig`
+BUILDROOT=st make zondaxtee_stm32mp157_dk2_defconfig
 BUILDROOT=st make
 ```
