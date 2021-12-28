@@ -8,11 +8,11 @@ endif
 
 IMAGES=$(BUILDROOT_DIR)/output/images
 
-image_dir:
-	@ln -sfT $(IMAGES) $(MAKEFILE_DIR)/images
-
 all:image_dir
 	@cd $(BUILDROOT_DIR) && make all
+
+image_dir:
+	@ln -sfT $(IMAGES) $(MAKEFILE_DIR)/images
 
 git-reset:
 	@git submodule foreach --recursive git reset --hard
