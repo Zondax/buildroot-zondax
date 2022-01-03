@@ -5,8 +5,8 @@
 # download a 2021-04-24 rust nightly precompiled binaries
 #
 ################################################################################
-RUST_BIN_NIGHTLY_VERSION = 1.54.0
-RUST_BIN_NIGHTLY_DATE = 2021-04-24
+RUST_BIN_NIGHTLY_VERSION = 1.57.0
+RUST_BIN_NIGHTLY_DATE = 2021-12-02
 RUST_BIN_NIGHTLY_SITE = https://static.rust-lang.org/dist/$(RUST_BIN_NIGHTLY_DATE)
 # example:
 # https://static.rust-lang.org/dist/2021-04-24/cargo-nightly-x86_64-unknown-linux-gnu.tar.gz

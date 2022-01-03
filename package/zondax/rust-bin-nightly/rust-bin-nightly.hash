@@ -98,9 +98,12 @@ sha256  a22e19859b3c5032daac1633637546a986c51bdfa3ad0db6e394e6cc461f466b  rust-s
 # Verified using https://static.rust-lang.org/dist/rust-std-1.54.0-x86_64-unknown-linux-musl.tar.xz.asc
 sha256  c2de24eb3e524c0fdd1e8116f578c103035da1ece1e4c06efab67999180eefe8  rust-std-1.54.0-x86_64-unknown-linux-musl.tar.xz
 
-sha256  4838b652a546fa89c72e3606d7d727657ac5b213e30acc891636939bee320404  rust-nightly-x86_64-unknown-linux-gnu.tar.xz
-sha256  9fba348cb875b3f0a62b7546628ef3cf7bc279ef0b1bcbb5532f0a8b46f3a1e3  rust-std-nightly-x86_64-unknown-linux-gnu.tar.gz
-sha256  af1df2142e05024b5be08befac71772c2b69bfea903b3ef3de7181968b70a03f  rust-std-nightly-armv7-unknown-linux-gnueabihf.tar.xz
+sha256  c8aa39ee27ecf6f2910a3c9f2be39ab630bf9a09f42563dc01fc8a5a62d48968  rust-nightly-x86_64-unknown-linux-gnu.tar.xz
+sha256  b1266b782982869ab6be7645de0352189c7367bdcc4b6ef0ec56a7f322fcace2  rust-std-nightly-x86_64-unknown-linux-gnu.tar.gz 
+sha256  3491950d4c28a0529c07a1ddbf4d8aba33a950e59a7518cfda905df734d23587  rust-std-nightly-armv7-unknown-linux-gnueabihf.tar.xz
+sha256  52c84315b20cba795d754cfc74ae2028757be97cfb03ebc775993366bce2ac3f  rust-std-nightly-aarch64-unknown-linux-gnu.tar.xz
+sha256  6f23c1dcf4e67065bcc2fa2530d1359a4e693440a70b52b3c9ca790b25b25ecc  rust-std-nightly-arm-unknown-linux-gnueabi.tar.xz
+
 # Locally generated
 sha256  62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a  LICENSE-APACHE
 sha256  23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3  LICENSE-MIT
