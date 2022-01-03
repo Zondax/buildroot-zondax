@@ -1,6 +1,6 @@
 ################################################################################
 #
-# rustc
+# rustc-nightly
 #
 ################################################################################
 
@@ -23,14 +23,12 @@ $(eval $(host-virtual-package))
 
 ifeq ($(BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS),y)
 define RUSTC_NIGHTLY_INSTALL_CARGO_CONFIG
-	echo "************** INSTALLING CARGOOO **************"
 	mkdir -p $(HOST_DIR)/share/cargo
 	sed -e 's/@RUSTC_TARGET_NAME@/$(RUSTC_TARGET_NAME)/' \
 		-e 's/@CROSS_PREFIX@/$(notdir $(TARGET_CROSS))/' \
 	    ../package/zondax/rustc-nightly/cargo-config.in \
 		> $(HOST_DIR)/share/cargo/config
 endef
-#package/rustc-nightly/cargo-config.in \
 # check-package disable TypoInPackageVariable - TOOLCHAIN intended
 TOOLCHAIN_POST_INSTALL_STAGING_HOOKS += RUSTC_NIGHTLY_INSTALL_CARGO_CONFIG
 endif
