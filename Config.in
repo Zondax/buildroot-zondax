@@ -1,2 +1,2 @@
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/hellorustee/Config.in"
-source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/rustc-nightly/Config.in.host"
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/rustc-nightly/Config.in"
