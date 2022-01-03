@@ -1,6 +1,8 @@
 ################################################################################
 #
-# rust-bin
+# rust-bin-nightly 
+# taken from the buildin package in buildroot but with some changes to 
+# download a 2021-04-24 rust nightly precompiled binaries
 #
 ################################################################################
 RUST_BIN_NIGHTLY_VERSION = 1.54.0
@@ -43,18 +45,14 @@ HOST_RUST_BIN_NIGHTLY_INSTALL_OPTS = \
 	--components=rustc,cargo,rust-std-$(RUSTC_HOST_NAME)
 
 define HOST_RUST_BIN_NIGHTLY_INSTALL_RUSTC
-	echo "*** OPTIONS $(HOST_RUST_BIN_NIGHTLY_INSTALL_OPTS)"
 	(cd $(@D); \
 		./install.sh $(HOST_RUST_BIN_NIGHTLY_INSTALL_OPTS))
-	echo "**RUSTC INSTALL DONEEEE"
 endef
 
 ifeq ($(BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS),y)
 define HOST_RUST_BIN_NIGHTLY_INSTALL_LIBSTD_TARGET
-	echo "*** INSTALLING NIGHTLY TARGET"
 	(cd $(@D)/std/rust-std-nightly-$(RUSTC_TARGET_NAME); \
 		./install.sh $(HOST_RUST_BIN_NIGHTLY_INSTALL_COMMON_OPTS))
-	echo "**TARGET DONEEEE"
 endef
 endif
 

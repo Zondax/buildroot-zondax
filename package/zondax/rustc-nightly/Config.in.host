@@ -119,43 +119,8 @@ config BR2_PACKAGE_HOST_RUSTC_NIGHTLY
 
 	  http://www.rust-lang.org
 
-if BR2_PACKAGE_HOST_RUSTC_NIGHTLY
-
-choice
-	prompt "Rust compiler variant"
-	default BR2_PACKAGE_HOST_RUST_BIN_NIGHTLY
-	help
-	  Select a Rust compiler
-
-config BR2_PACKAGE_HOST_RUST_NIGHTLY
-	bool "host rust nightly"
-	# RUSTC_TARGET_NAME must be set for building host-rust
-	# otherwise config.toml is broken.
-	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
-	# triggers ICE on trunc_int_for_mode, at explow.c:56
-	depends on BR2_TOOLCHAIN_GCC_AT_LEAST_5 || !BR2_aarch64
-	help
-	  This package will build the compiler for the host as well as
-	  two flavors of the standard library: one for the host, another
-	  for the target. Both are installed in the host directory.
-
-comment "host-rust-nightly needs a toolchain w/ gcc >= 5"
-	depends on BR2_aarch64
-	depends on !BR2_TOOLCHAIN_GCC_AT_LEAST_5
-
-config BR2_PACKAGE_HOST_RUST_BIN_NIGHTLY
-	bool "host rust (pre-built)"
-	help
-	  This package will install pre-built versions of the compiler
-	  for the host and the Rust standard library for the target.
-
-endchoice
-
-endif
-
 config BR2_PACKAGE_PROVIDES_HOST_RUSTC_NIGHTLY
 	string
-	default "host-rust-nightly" if BR2_PACKAGE_HOST_RUST_NIGHTLY
 	# Default to host-rust-bin as long as host arch supports it
 	default "host-rust-bin-nightly" if !BR2_PACKAGE_HOST_RUST_NIGHTLY
 	depends on BR2_PACKAGE_HOST_RUSTC_NIGHTLY_ARCH_SUPPORTS
