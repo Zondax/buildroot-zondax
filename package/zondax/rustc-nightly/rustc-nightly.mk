@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-RUSTC_NIGHTLY_ARCH = $(call qstrip,$(BR2_PACKAGE_HOST_RUSTC_ARCH))
-RUSTC_NIGHTLY_ABI = $(call qstrip,$(BR2_PACKAGE_HOST_RUSTC_ABI))
+RUSTC_NIGHTLY_ARCH = $(call qstrip,$(BR2_PACKAGE_HOST_RUSTC_NIGHTLY_ARCH))
+RUSTC_NIGHTLY_ABI = $(call qstrip,$(BR2_PACKAGE_HOST_RUSTC_NIGHTLY_ABI))
 
 ifeq ($(BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS),y)
 RUSTC_TARGET_NAME = $(RUSTC_NIGHTLY_ARCH)-unknown-linux-$(LIBC)$(RUSTC_NIGHTLY_ABI)
