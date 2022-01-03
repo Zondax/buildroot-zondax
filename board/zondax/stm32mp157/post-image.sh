@@ -18,6 +18,14 @@ atf_image()
 main()
 {
 	local ATFBIN="$(atf_image)"
+    signedFileName="$(echo "${ATFBIN}" | sed 's/-mx*/-mx_Signed/g')"
+
+    if [ -f ${BINARIES_DIR}/$signedFileName ]; then
+        echo "Signed image detected. Using it"
+        mv ${BINARIES_DIR}/${ATFBIN} ${BINARIES_DIR}/${ATFBIN}".backup"
+        cp ${BINARIES_DIR}/$signedFileName ${BINARIES_DIR}/${ATFBIN} 
+    fi
+
 	if [ ! -e ${BINARIES_DIR}/${ATFBIN} ]; then
 		echo "Can not find ATF binary ${ATFBIN}"
 		exit 1
