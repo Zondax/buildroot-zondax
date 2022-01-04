@@ -11,7 +11,7 @@ config BR2_PACKAGE_HOST_RUSTC_NIGHTLY_ARCH_SUPPORTS
 
 # The below entries match Tier 1 platforms as described at
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html.
-config BR2_PACKAGE_HOST_RUSTC_TARGET_TIER1_PLATFORMS
+config BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_TIER1_PLATFORMS
 	bool
 	# aarch64-unknown-linux-gnu
 	default y if BR2_aarch64 && BR2_TOOLCHAIN_USES_GLIBC
@@ -23,7 +23,7 @@ config BR2_PACKAGE_HOST_RUSTC_TARGET_TIER1_PLATFORMS
 # The below entries match Tier 2 platforms with host tools as
 # described at
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html.
-config BR2_PACKAGE_HOST_RUSTC_TARGET_TIER2_HOST_TOOLS_PLATFORMS
+config BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_TIER2_HOST_TOOLS_PLATFORMS
 	bool
 	# aarch64-unknown-linux-musl
 	default y if BR2_aarch64 && BR2_TOOLCHAIN_USES_MUSL
@@ -59,7 +59,7 @@ config BR2_PACKAGE_HOST_RUSTC_TARGET_TIER2_HOST_TOOLS_PLATFORMS
 # The below entries match Tier 2 platforms without host tools as
 # described at
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html.
-config BR2_PACKAGE_HOST_RUSTC_TARGET_TIER2_PLATFORMS
+config BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_TIER2_PLATFORMS
 	bool
 	# arm-unknown-linux-musleabi
 	default y if BR2_ARM_CPU_ARMV6 && BR2_ARM_EABI && BR2_TOOLCHAIN_USES_MUSL
@@ -93,11 +93,11 @@ config BR2_PACKAGE_HOST_RUSTC_TARGET_TIER2_PLATFORMS
 	default y if BR2_sparc64 && BR2_TOOLCHAIN_USES_GLIBC
 
 # All target rust packages should depend on this option
-config BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+config BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_ARCH_SUPPORTS
 	bool
-	default y if BR2_PACKAGE_HOST_RUSTC_TARGET_TIER1_PLATFORMS
-	default y if BR2_PACKAGE_HOST_RUSTC_TARGET_TIER2_HOST_TOOLS_PLATFORMS
-	default y if BR2_PACKAGE_HOST_RUSTC_TARGET_TIER2_PLATFORMS
+	default y if BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_TIER1_PLATFORMS
+	default y if BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_TIER2_HOST_TOOLS_PLATFORMS
+	default y if BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_TIER2_PLATFORMS
 	depends on BR2_PACKAGE_HOST_RUSTC_NIGHTLY_ARCH_SUPPORTS
 
 config BR2_PACKAGE_HOST_RUSTC_NIGHTLY_ARCH

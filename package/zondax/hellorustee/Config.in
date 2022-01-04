@@ -1,7 +1,7 @@
 # This is required so the package can be enabled/disabled
 config BR2_PACKAGE_HELLORUSTEE
 	bool "hellorustee"
-	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_HOST_RUSTC_NIGHTLY_TARGET_ARCH_SUPPORTS
 	depends on BR2_TARGET_OPTEE_OS
 	depends on BR2_TOOLCHAIN_HAS_THREADS
 	depends on !BR2_STATIC_LIBS
