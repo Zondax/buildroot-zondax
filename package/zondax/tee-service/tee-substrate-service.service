@@ -1,0 +1,10 @@
+[Unit]
+Description=TEE substrate service
+
+[Service]
+User=root
+EnvironmentFile=-@sysconfdir@/default/tee-substrate-service
+ExecStart=@sbindir@/tee-substrate-service $OPTARGS
+
+[Install]
+WantedBy=basic.target
