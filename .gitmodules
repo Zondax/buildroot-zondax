@@ -7,3 +7,6 @@
 [submodule "external/hello-rustee"]
 	path = external/hello-rustee
 	url = https://github.com/Zondax/hello-rustee
+[submodule "external/tee-service"]
+	path = external/tee-service
+	url = https://github.com/Zondax/tee-substrate-service
