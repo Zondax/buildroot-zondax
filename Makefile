@@ -1,15 +1,25 @@
 MAKEFILE_DIR := $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
 export BR2_EXTERNAL = $(MAKEFILE_DIR)
-IMAGES=$(MAKEFILE_DIR)/buildroot/output/images
+BUILDROOT_DIR=$(MAKEFILE_DIR)/buildroot
 
-all:
-	@cd buildroot && make all
+ifeq ($(BUILDROOT), st)
+	BUILDROOT_DIR=$(MAKEFILE_DIR)/buildroot-st
+endif
 
-git-update:
+IMAGES=$(BUILDROOT_DIR)/output/images
+
+all:image_dir
+	@cd $(BUILDROOT_DIR) && make all
+
+image_dir:
+	@ln -sfT $(IMAGES) $(MAKEFILE_DIR)/images
+
+git-reset:
+	@git submodule foreach --recursive git reset --hard
 	@git submodule update --init --recursive
 
 ccache-setup:
-	@cd buildroot && make CCACHE_OPTIONS="--max-size=50G --zero-stats" ccache-options
+	@cd $(BUILDROOT_DIR) && make CCACHE_OPTIONS="--max-size=50G --zero-stats" ccache-options
 
 # To exit QEMU use ctrl-a + X
 start-qemu-host:
@@ -22,4 +32,4 @@ start-qemu-host:
 	-bios flash.bin
 
 .DEFAULT:
-	@cd buildroot && make $@
+	@cd $(BUILDROOT_DIR) && make $@
