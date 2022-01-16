@@ -5,7 +5,7 @@ HELLORUSTEE_SITE=$(BR2_EXTERNAL_ZONDAXTEE_PATH)/external/hello-rustee
 HELLORUSTEE_SITE_METHOD=local
 
 # get correct rust enviroment
-HELLORUSTEE_DEPENDENCIES = host-python3 host-python-cryptography host-rustc-nightly optee-client optee-os
+HELLORUSTEE_DEPENDENCIES = host-python3 host-py-cryptography host-rustc-nightly optee-client optee-os
 HELLORUSTEE_BIN_DIR = target/$(RUSTC_TARGET_NAME)/$(HELLORUSTEE_CARGO_MODE)
 HELLORUSTEE_CARGO_OPTS = \
      $(if $(BR2_ENABLE_DEBUG),,--release) \
