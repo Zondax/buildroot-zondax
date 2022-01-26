@@ -5,7 +5,7 @@ script_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 buildroot_path=$script_path/../../
 ls $buildroot_path
 imageDir=$buildroot_path/images/
-keysDir=$buildroot_path/keys/
+keysDir=$buildroot_path/keys/tfa_keys
 # Keys for signing
 privName="privateKey"
 pubName="publicKey"

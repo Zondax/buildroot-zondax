@@ -1,4 +1,8 @@
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/hellorustee/Config.in"
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/tee-service/Config.in"
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/py-cryptography/Config.in"
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/py-cffi/Config.in"
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/py-six/Config.in"
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/py-pycparser/Config.in"
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/rustc-nightly/Config.in"
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/teestatus/Config.in"
