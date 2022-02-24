@@ -11,5 +11,7 @@ config BR2_PACKAGE_HELLORUSTEE
     select BR2_PACKAGE_HOST_RUSTC_BIN_NIGHTLY
     select BR2_PACKAGE_HOST_RUSTC_NIGHTLY
 
+config BR2_PACKAGE_HELLORUSTEE_SIGN_TA
+	bool "Enable TA signing"
 #.. now add other configuration options 
 # reference https://bootlin.com/doc/training/buildroot/buildroot-slides.pdf
