@@ -27,7 +27,7 @@ define run_docker
 	docker run $(TTY_SETTING) $(INTERACTIVE_SETTING) --rm \
 	-u $(USERID) \
 	-v $(shell pwd):/project \
-	$(DOCKER_IMAGE_ZONDAX) "$(2)"
+	$(DOCKER_IMAGE_ZONDAX) "$(1)"
 endef
 
 
