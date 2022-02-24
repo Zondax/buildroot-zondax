@@ -1,0 +1,58 @@
+/dts-v1/;
+
+/ {
+	    description = "FIT image for secure uboot";
+        #address-cells = <1>;
+
+        images {
+                kernel-1 {
+                        description = "Linux kernel";
+                        data = /incbin/("zImage");
+                        type = "kernel";
+                        arch = "arm";
+                        os = "linux";
+                        compression = "none";
+                        load = <0xC0800000>;
+                        entry = <0xC0800000>;
+                        hash-1 {
+                                algo = "sha256";
+                        };
+                        signature-1 {
+                                algo = "sha256,rsa4096";
+                                key-name-hint = "uboot_keys";
+                        };
+                };
+
+                fdt-stm32mp157c-dk2-mx.dtb {
+                        description = "Flattened Device Tree blob";
+                        data = /incbin/("stm32mp157c-dk2-mx.dtb");
+                        type = "flat_dt";
+                        arch = "arm";
+                        compression = "none";
+                        hash-1 {
+                                algo = "sha256";
+                        };
+                        signature-1 {
+                                algo = "sha256,rsa4096";
+                                key-name-hint = "uboot_keys";
+                        };
+                };
+	};
+
+    configurations {
+         default = "conf-stm32mp157c-dk2.dtb";
+         conf-stm32mp157c-dk2.dtb {
+		     description = "1 Linux kernel, FDT blob";
+		     kernel = "kernel-1";
+		     fdt = "fdt-stm32mp157c-dk2-mx.dtb";
+             hash-1 {
+                     algo = "sha256";
+             };
+             signature-1 {
+                     algo = "sha256,rsa4096";
+                     key-name-hint = "uboot_keys";
+		             sign-images = "kernel", "fdt";
+             };
+         };
+	};
+};
