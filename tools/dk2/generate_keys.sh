@@ -16,7 +16,7 @@ fi
 
 # Create keys directory if it doesn't exist
 if [ ! -d $keysDir ]; then
-    mkdir $keysDir
+    mkdir -p $keysDir
 fi
 
 # Copy keys only if they do not exist
