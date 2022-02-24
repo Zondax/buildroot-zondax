@@ -1,0 +1,13 @@
+name: CI
+on: [push]
+
+jobs:
+  build_dk2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+    - name: Build image
+      run: |
+        make dk2
