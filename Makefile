@@ -5,7 +5,7 @@ INTERACTIVE:=$(shell [ -t 0 ] && echo 1)
 USERID:=$(shell id -u)
 $(info USERID                : $(USERID))
 
-DOCKER_IMAGE_ZONDAX=zondax/builder-yocto:latest
+DOCKER_IMAGE=zondax/builder-yocto:latest
 
 ifdef INTERACTIVE
 INTERACTIVE_SETTING:="-i"
@@ -27,7 +27,7 @@ define run_docker
 	docker run $(TTY_SETTING) $(INTERACTIVE_SETTING) --rm \
 	-u $(USERID) \
 	-v $(shell pwd):/project \
-	$(DOCKER_IMAGE_ZONDAX) "$(1)"
+	$(DOCKER_IMAGE) "$(1)"
 endef
 
 
@@ -65,7 +65,11 @@ start-qemu-host:
 	-semihosting-config enable,target=native \
 	-bios flash.bin
 
-dk2:
+.PHONY: docker
+docker:
+	docker pull $(DOCKER_IMAGE)
+
+dk2:docker
 	$(call run_docker, BUILDROOT=st make -C $(DOCKER_APP_SRC) zondaxtee_stm32mp157_dk2_defconfig)
 	$(call run_docker, BUILDROOT=st make -C $(DOCKER_APP_SRC))
 
