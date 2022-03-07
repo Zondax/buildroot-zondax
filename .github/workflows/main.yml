@@ -12,3 +12,14 @@ jobs:
       run: |
         make git-reset
         make dk2
+
+  build_imx:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+    - name: Build image
+      run: |
+        make git-reset
+        make imx8mmevk
