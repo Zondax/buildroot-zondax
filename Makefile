@@ -71,6 +71,10 @@ docker:
 
 dk2:docker
 	$(call run_docker, BUILDROOT=st make -C $(DOCKER_APP_SRC) zondaxtee_stm32mp157_dk2_defconfig)
+	$(call run_docker, make -C $(DOCKER_APP_SRC))
+
+imx8mmevk:docker
+	$(call run_docker, BUILDROOT=st make -C $(DOCKER_APP_SRC) make zondaxtee_imx8mmevk_defconfig)
 	$(call run_docker, BUILDROOT=st make -C $(DOCKER_APP_SRC))
 
 .DEFAULT:
