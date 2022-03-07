@@ -20,7 +20,7 @@ To exit, you can use `CTRL+A X`
 ## iMX8MMevk
 
 ```bash
-make zondaxtee_imxmmevk_defconfig
+make zondaxtee_imx8mmevk_defconfig
 make
 ```
 
