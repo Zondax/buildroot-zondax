@@ -19,7 +19,7 @@ die() { echo "$@" >&2; exit 1; }
 
 test -f $BINARIES_DIR/$FIT_IMG
 if [ $? -eq 0 ]; then
-    echo "$FIT_IMG already created, please delete it to proceed" 
+    echo "$FIT_IMG already created, please delete it to proceed"
     # Should we abort this here by returning 1?
     exit 0
 fi
@@ -46,12 +46,9 @@ run $mkimage -D "${DOPTS}" -F \
 -k "${keys}" -K $BINARIES_DIR/${CTRL_FDT} -r $BINARIES_DIR/${FIT_IMG} || exit 1
 
 echo ""
-echo "Copying $FIT_IMG to boot dir so uboot can load it" 
-run cp $BINARIES_DIR/$FIT_IMG $TARGET_DIR/boot/$FIT_IMG || exit 1 
-#Copy a custom extlinux.conf which was taken from yocto builds
-run cp $BOARD_DIR/extlinux.conf $TARGET_DIR/boot/extlinux/ || exit 1
+echo "Copying $FIT_IMG to boot dir so uboot can load it"
+run cp $BINARIES_DIR/$FIT_IMG $TARGET_DIR/boot/$FIT_IMG || exit 1
 #run cp $BOARD_DIR/uEnv.txt $TARGET_DIR/boot/ || exit 1
 
 rm $BINARIES_DIR/stm32.its
 #run cat $BINARIES_DIR/$UBOOT_BIN $BINARIES_DIR/$CTRL_FDT > $BINARIES_DIR/u-boot.bin || exit 1   #Appended to the end portion ( Please refer to the block diagram)
-
