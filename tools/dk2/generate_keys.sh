@@ -35,3 +35,8 @@ else
     echo "Keys already in ${keysDir} skipping key-generation"
     echo "Make a security copy of them"
 fi
+
+# Generate unencrypted private key if they do not exist
+if [[ ! -f $keysDir/${privName}_noenc.pem ]]; then
+    openssl ec -in $keysDir/$privateKey -out $keysDir/${privName}_noenc.pem -passin pass:$pass
+fi
