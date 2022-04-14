@@ -1,0 +1,8 @@
+config BR2_PACKAGE_HOST_IMX_CST
+	bool "host imx-cst"
+	help
+	  I.MX code signing tool provides software code signing
+	  support designed that integrate the HABv4 and AHAB
+	  library.
+
+	  https://www.nxp.com/webapp/sps/download/license.jsp?colCode=IMX_CST_TOOL
