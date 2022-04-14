@@ -8,7 +8,7 @@
 IMX_CST_SITE = https://gitlab.apertis.org/pkg/imx-code-signing-tool.git
 IMX_CST_SITE_METHOD = git
 IMX_CST_VERSION = e2c687a856e6670e753147aacef42d0a3c07891a
-IMX_CST_LICENSE = BSD
+IMX_CST_LICENSE = BSD-3-Clause
 IMX_CST_LICENSE_FILES = LICENSE.bsd3
 
 HOST_IMX_CST_DEPENDENCIES = host-byacc host-flex host-openssl
@@ -32,6 +32,7 @@ define HOST_IMX_CST_BUILD_CMDS
 		COPTS="$(HOST_CFLAGS) $(HOST_CPPFLAGS) $(HOST_LDFLAGS)" \
 		-C $(@D)/code/hab_csf_parser
 endef
+
 define HOST_IMX_CST_INSTALL_CMDS
 	$(INSTALL) -D -m 755 $(@D)/code/cst/code/obj.linux64/cst $(HOST_DIR)/bin/cst
 	$(INSTALL) -D -m 755 $(@D)/code/cst/code/obj.linux64/srktool $(HOST_DIR)/bin/srktool
