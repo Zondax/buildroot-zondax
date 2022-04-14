@@ -6,3 +6,5 @@ source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/py-six/Config.in"
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/py-pycparser/Config.in"
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/rustc-nightly/Config.in"
 source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/teestatus/Config.in"
+
+source "$BR2_EXTERNAL_ZONDAXTEE_PATH/package/zondax/imx-cst/Config.in.host"
