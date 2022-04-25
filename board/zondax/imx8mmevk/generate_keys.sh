@@ -82,6 +82,14 @@ EOF
 
 fi
 
+if [ ! -f "${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/print_fit_hab.txt" ]; then
+    if grep -Eq "^BR2_TARGET_OPTEE_OS=y$" ${BR2_CONFIG}; then
+	BL31=${BINARIES_DIR}/bl31.bin BL32=${BINARIES_DIR}/tee.bin BL33=${BINARIES_DIR}/u-boot-nodtb.bin TEE_LOAD_ADDR=0xfe000000 ATF_LOAD_ADDR=0x00920000 ${HOST_DIR}/bin/print_fit_hab.sh > ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/print_fit_hab.txt 0x0 || exit 10
+    else
+	BL31=${BINARIES_DIR}/bl31.bin BL33=${BINARIES_DIR}/u-boot-nodtb.bin TEE_LOAD_ADDR=0xfe000000 ATF_LOAD_ADDR=0x00920000 ${HOST_DIR}/bin/print_fit_hab.sh > ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/print_fit_hab.txt 0x0 || exit 10
+    fi
+fi
+
 if [ ! -f "${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/csf_fit.txt" ] ; then
 
 cat <<EOF > ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/csf_fit.txt
@@ -120,7 +128,7 @@ cat <<EOF > ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/csf_fit.txt
 
 EOF
 
-[ $? != 0 ] && exit 10
+[ $? != 0 ] && exit 11
 
 fi
 
