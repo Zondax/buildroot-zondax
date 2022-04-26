@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+o#!/usr/bin/env bash
 
 # Create the folder
 if [ ! -d "${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys" ] ; then
@@ -124,11 +124,22 @@ cat <<EOF > ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/csf_fit.txt
     # Key slot index used to authenticate the image data
     Verification index = 2
     # Authenticate Start Address, Offset, Length and file
-    Blocks = 0x401fcdc0 0x57c00 0x1020 "${BINARIES_DIR}/imx8-boot-sd.bin"
-
+    Blocks = 0x401fcdc0 0x57c00 0x1020 "/src/buildroot/output/images/imx8-boot-sd.bin", \\
 EOF
 
 [ $? != 0 ] && exit 11
+
+# Fill Authenticate Data
+lenght=$(cat ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/print_fit_hab.txt|wc -l)
+current=$(($lenght-1))
+while read -r line; do
+    tmp="$line \"${BINARIES_DIR}/imx8-boot-sd.bin\""
+    if [ $current -gt 0 ]; then
+	tmp="${tmp}, \\"
+    fi
+    echo $tmp >> ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/csf_fit.txt
+    current=$(($current-1))
+done <${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/print_fit_hab.txt
 
 fi
 
