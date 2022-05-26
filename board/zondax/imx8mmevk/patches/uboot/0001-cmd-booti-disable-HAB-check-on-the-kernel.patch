@@ -1,0 +1,26 @@
+From 697084ef7d6ece07092b1ff61c0ca1bf961d9f38 Mon Sep 17 00:00:00 2001
+From: Thomas Perrot <thomas.perrot@bootlin.com>
+Date: Wed, 25 May 2022 18:08:31 +0200
+Subject: [PATCH] cmd: booti: disable HAB check on the kernel
+
+Signed-off-by: Thomas Perrot <thomas.perrot@bootlin.com>
+---
+ cmd/booti.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmd/booti.c b/cmd/booti.c
+index a132949091af..d343588ce4b2 100644
+--- a/cmd/booti.c
++++ b/cmd/booti.c
+@@ -42,7 +42,7 @@ static int booti_start(cmd_tbl_t *cmdtp, int flag, int argc,
+ 	if (ret != 0)
+ 		return 1;
+ 
+-#if defined(CONFIG_IMX_HAB) && !defined(CONFIG_AVB_SUPPORT)
++#if 0
+ 	extern int authenticate_image(
+ 		uint32_t ddr_start, uint32_t raw_image_size);
+ 	if (authenticate_image(ld, image_size) != 0) {
+-- 
+2.35.3
+
