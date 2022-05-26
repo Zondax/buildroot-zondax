@@ -10,6 +10,7 @@ jobs:
         submodules: 'true'
     - name: Build image
       run: |
+        ./tools/optee/gen_keys.sh
         make git-reset
         make dk2
 
@@ -21,5 +22,6 @@ jobs:
         submodules: 'true'
     - name: Build image
       run: |
+        ./tools/optee/gen_keys.sh
         make git-reset
         make imx8mmevk
