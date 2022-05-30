@@ -74,6 +74,7 @@ dk2:docker
 	$(call run_docker, BUILDROOT=st make -C $(DOCKER_APP_SRC))
 
 imx8mmevk:docker
+	$(call run_docker, BUILDROOT=0 make -C $(DOCKER_APP_SRC) ./tools/optee/gen_keys.sh)
 	$(call run_docker, BUILDROOT=0 make -C $(DOCKER_APP_SRC) zondaxtee_imx8mmevk_defconfig)
 	$(call run_docker, BUILDROOT=0 make -C $(DOCKER_APP_SRC))
 
