@@ -124,7 +124,7 @@ cat <<EOF > ${BR2_EXTERNAL_ZONDAXTEE_PATH}/keys/cst_keys/csf_fit.txt
     # Key slot index used to authenticate the image data
     Verification index = 2
     # Authenticate Start Address, Offset, Length and file
-    Blocks = 0x401fcdc0 0x57c00 0x1020 "/src/buildroot/output/images/imx8-boot-sd.bin", \\
+    Blocks = 0x401fcdc0 0x57c00 0x1020 "${BINARIES_DIR}/imx8-boot-sd.bin", \\
 EOF
 
 [ $? != 0 ] && exit 11
