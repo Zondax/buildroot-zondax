@@ -3,6 +3,9 @@
 script_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source $script_path/keys_base.sh
 
+# check if keysDir exist if not creates it
+[ -d $keysDir ] || mkdir -p $keysDir
+
 if ! command -v openssl &> /dev/null
 then
     echo "openssl not found"
