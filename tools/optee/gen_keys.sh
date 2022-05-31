@@ -10,6 +10,12 @@ then
     exit
 fi
 
+# Create keys directory if it doesn't exist
+if [ ! -d $keysDir ]; then
+    mkdir -p $keysDir
+fi
+
+
 if [[ ! -f $keysDir/$priv_key ]] && [[ ! -f $keysDir/$pub_key ]]; then
     openssl genrsa -out $keysDir/$priv_key 2048
 
