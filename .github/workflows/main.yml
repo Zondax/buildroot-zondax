@@ -11,6 +11,8 @@ jobs:
     - name: Build image
       run: |
         ./tools/optee/gen_keys.sh
+        ./tools/uboot/gen_keys.sh
+        ./tools/dk2/generate_keys.sh
         make git-reset
         make dk2
 
