@@ -8,7 +8,8 @@ BR2_TARGET_GENERIC_ISSUE="Welcome to Zondax TEE"
 BR2_PER_PACKAGE_DIRECTORIES=y
 BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_ZONDAXTEE_PATH)/board/zondax/stm32mp157/dk2-overlay/  $(BR2_EXTERNAL_ZONDAXTEE_PATH)/board/zondax/common/rootfs-overlay/"
 BR2_ROOTFS_POST_IMAGE_SCRIPT="$(BR2_EXTERNAL_ZONDAXTEE_PATH)/board/zondax/stm32mp157/post-image.sh"
-BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_ZONDAXTEE_PATH)/board/zondax/stm32mp157/sign_uboot.sh"
+# with this hook we sign tf-a and uboot
+BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_ZONDAXTEE_PATH)/board/zondax/stm32mp157/post_build.sh"
 
 BR2_LINUX_KERNEL=y
 BR2_LINUX_KERNEL_CUSTOM_GIT=y
