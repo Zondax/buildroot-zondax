@@ -10,6 +10,7 @@ jobs:
         submodules: 'true'
     - name: Build image
       run: |
+        pip3 install pycryptodomex
         ./tools/optee/gen_keys.sh
         ./tools/uboot/gen_keys.sh
         ./tools/dk2/generate_keys.sh
