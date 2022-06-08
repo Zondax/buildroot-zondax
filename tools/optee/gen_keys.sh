@@ -14,10 +14,9 @@ then
 fi
 
 # Create keys directory if it doesn't exist
-if [ ! -d $keysDir ]; then
-    mkdir -p $keysDir
+if [[ ! -d $keysDir ]]; then
+    mkdir -p $keysDir || exit 1
 fi
-
 
 if [[ ! -f $keysDir/$priv_key ]] && [[ ! -f $keysDir/$pub_key ]]; then
     openssl genrsa -out $keysDir/$priv_key 2048
@@ -42,3 +41,5 @@ else
     echo "Optee-Keys already in ${keysDir} skipping key-generation"
     echo "Make a security copy of them"
 fi
+
+exit 0
