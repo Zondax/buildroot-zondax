@@ -27,7 +27,8 @@ if [[ ! -f $keysDir/$uboot_key ]] && [[ ! -f $keysDir/$uboot_cert ]] && [[ ! -f 
         exit 1
     fi
     
-    openssl req -new -x509 -key $keysDir/$uboot_key -out $keysDir/$uboot_cert 
+    openssl req -new -x509 -key $keysDir/$uboot_key -out $keysDir/$uboot_cert \
+        -subj '/C=CH/ST=Zug/L=./CN=www.zondax.ch'
 
     if [ $? -eq 0 ]; then
         echo "Uboot cert generation successful"
