@@ -6,11 +6,14 @@ buildroot_path=$script_path/../../
 ls $buildroot_path
 imageDir=$buildroot_path/images/
 keysDir=$buildroot_path/keys/tfa_keys
+pkhBootDir=$buildroot_path/board/zondax/stm32mp157/dk2-overlay/boot/publicKeyhash.bin
+
 # Keys for signing
 privName="privateKey"
 pubName="publicKey"
 pubKeyHashName="publicKeyhash"
 privateKey=${privName}.pem
+privKeyNoEnc=${privName}_noenc.pem
 publicKey=${pubName}.pem
 pkh=${pubKeyHashName}.bin
 
