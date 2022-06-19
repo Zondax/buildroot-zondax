@@ -3,10 +3,8 @@
 # Path to images directory
 script_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 buildroot_path=$script_path/../../
-ls $buildroot_path
 imageDir=$buildroot_path/images/
 keysDir=$buildroot_path/keys/tfa_keys
-pkhBootDir=$buildroot_path/board/zondax/stm32mp157/dk2-overlay/boot/publicKeyhash.bin
 
 # Keys for signing
 privName="privateKey"
@@ -16,6 +14,7 @@ privateKey=${privName}.pem
 privKeyNoEnc=${privName}_noenc.pem
 publicKey=${pubName}.pem
 pkh=${pubKeyHashName}.bin
+pkhBootDir=$buildroot_path/board/zondax/stm32mp157/dk2-overlay/boot/${pkh}
 
 # Dummy password for keygen tools to
 pass="test"

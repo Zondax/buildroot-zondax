@@ -39,7 +39,7 @@ if [[ ! -f $keysDir/${publicKey} ]]; then
     echo "creating public key from private keys"
     openssl ec -passin pass:"${pass}" -in $keysDir/$privateKey -pubout -out "$keysDir/${publicKey}" || exit 1
 fi
-if [[ ! -f $keysDir/${privKeyNoEnc} ]]; then
+if [[ ! -f $keysDir/${pkh} ]]; then
     echo "getting public key hash"
     python3 $script_path/make_hash.py "${keysDir}/${pkh}" "$keysDir/${privKeyNoEnc}" "${pass}"  || exit 2
 fi
@@ -48,5 +48,6 @@ if [[ ! -f ${pkhBootDir} ]]; then
     echo "KeyHash generation successful"
     echo "KeyHash located in ${keysDir}"
     echo "Copying public key hash to boot dir"
-    cp "${keysDir}/${pkh}" "${pkhBootDir}" || exit 2
+    ls ${keysDir}
+    cp "${keysDir}/${pkh}" "${pkhBootDir}" || exit 3
 fi
