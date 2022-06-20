@@ -44,10 +44,10 @@ if [[ ! -f $keysDir/${pkh} ]]; then
     python3 $script_path/make_hash.py "${keysDir}/${pkh}" "$keysDir/${privKeyNoEnc}" "${pass}"  || exit 2
 fi
 
-if [[ ! -f ${pkhBootDir} ]]; then
+if [[ ! -f ${pkhBoardDir} ]]; then
     echo "KeyHash generation successful"
     echo "KeyHash located in ${keysDir}"
-    echo "Copying public key hash to boot dir"
+    echo "Copying public key hash to root partition"
     ls ${keysDir}
-    cp "${keysDir}/${pkh}" "${pkhBootDir}" || exit 3
+    cp "${keysDir}/${pkh}" "${pkhBoardDir}" || exit 3
 fi

@@ -14,7 +14,7 @@ privateKey=${privName}.pem
 privKeyNoEnc=${privName}_noenc.pem
 publicKey=${pubName}.pem
 pkh=${pubKeyHashName}.bin
-pkhBootDir=$buildroot_path/board/zondax/stm32mp157/dk2-overlay/boot/${pkh}
+pkhBoardDir=$buildroot_path/board/zondax/stm32mp157/dk2-overlay/${pkh}
 
 # Dummy password for keygen tools to
 pass="test"
