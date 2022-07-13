@@ -9,6 +9,7 @@ from Cryptodome.Signature import DSS
 bin_path = sys.argv[1]
 key_path = sys.argv[2]
 key_pass = sys.argv[3]
+print(key_pass)
 
 with open(key_path, "rb") as key_file:
     key = ECC.import_key(key_file.read(), passphrase=key_pass)

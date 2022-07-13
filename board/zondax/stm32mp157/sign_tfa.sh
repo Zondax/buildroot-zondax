@@ -5,6 +5,11 @@ tools_dir=$BR2_EXTERNAL_ZONDAXTEE_PATH/tools/dk2/
 
 tf_a_suffix="stm32"
 
+# calls the script to generate keys.
+#
+# the script would generate new keys only 
+# if the directory does not exist or is empty
+source $tools_dir/generate_keys.sh
 source $tools_dir/keys_base.sh
 
 for img_file in "${BINARIES_DIR}/"*".${tf_a_suffix}"; do
