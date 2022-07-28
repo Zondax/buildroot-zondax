@@ -6,6 +6,14 @@
 git clone --recursive --branch master https://github.com/Zondax/buildroot-zondax/
 cd buildroot-zondax
 ```
+
+if you forgot to add `--recursive` then:
+
+```
+git submodule update --recursive
+git submodule init
+```
+
 ## Generate optee-keys
 we have enabled optee-signing of TAs by default:
 ```bash
