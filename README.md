@@ -7,6 +7,13 @@ git clone --recursive https://github.com/Zondax/buildroot-zondax/tree/dk2_secure
 cd buildroot-zondax
 ```
 
+if you forgot to add `--recursive` then:
+
+```
+git submodule update --recursive
+git submodule init
+```
+
 ## Generating Keys
 
 | Command              | Description          |
