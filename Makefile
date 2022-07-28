@@ -77,5 +77,39 @@ imx8mmevk:docker
 	$(call run_docker, BUILDROOT=0 make -C $(DOCKER_APP_SRC) zondaxtee_imx8mmevk_defconfig)
 	$(call run_docker, BUILDROOT=0 make -C $(DOCKER_APP_SRC))
 
+#------------------------------------
+# Key generation scripts
+
+# generates OPTEE keys (used to sign TAs)
+genkeys-optee:
+	@./tools/optee/gen_keys.sh
+.PHONY: genkeys-optee
+
+# generates uboot keys
+genkeys-uboot:
+	@./tools/uboot/gen_keys.sh
+.PHONY: genkeys-uboot
+
+# generate 
+genkeys-dk2:
+	@./tools/dk2/generate_keys.sh
+.PHONY: genkeys-dk2
+
+genkeys: genkeys-optee genkeys-uboot genkeys-dk2 showkeys
+	@echo "Keys have been generated!"
+.PHONY: genkeys
+
+# show the location of the keys
+showkeys:
+	@printf "\n\e[1;34m OPTEE KEYS ---------------------------------------\e[0m\n"
+	@ls -l keys/optee_keys/
+
+	@printf "\n\e[1;34m UBOOT KEYS ---------------------------------------\e[0m\n"
+	@ls -l keys/uboot_keys/
+
+	@printf "\n\e[1;34m TFA KEYS   ---------------------------------------\e[0m\n"
+	@ls -l keys/tfa_keys/
+.PHONY: showkeys
+
 .DEFAULT:
 	@cd $(BUILDROOT_DIR) && make $@
