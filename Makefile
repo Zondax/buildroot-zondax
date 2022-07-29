@@ -58,12 +58,16 @@ ccache-setup:
 # To exit QEMU use ctrl-a + X
 start-qemu-host:
 	@cd $(IMAGES) && ../host/bin/qemu-system-arm \
-	-machine virt -machine secure=on -cpu cortex-a15 \
+	-machine virt,secure=on -cpu cortex-a15 \
+        -bios flash.bin \
 	-smp 1 -s -m 1024 -d unimp \
 	-serial mon:stdio \
-	-netdev user,id=vmnic -device virtio-net-device,netdev=vmnic \
-	-semihosting-config enable,target=native \
-	-bios flash.bin
+        -serial telnet:0.0.0.0:54321,server,nowait \
+        -object rng-random,filename=/dev/urandom,id=rng0 \
+        -device virtio-rng-pci,rng=rng0,max-bytes=1024,period=1000 \
+        -device virtio-net-device,netdev=vmnic \
+	-netdev user,id=vmnic \
+	-semihosting-config enable=on,target=native
 
 .PHONY: docker
 docker:
