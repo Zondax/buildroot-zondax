@@ -56,18 +56,30 @@ ccache-setup:
 	@cd $(BUILDROOT_DIR) && make CCACHE_OPTIONS="--max-size=50G --zero-stats" ccache-options
 
 # To exit QEMU use ctrl-a + X
+# Parameters: https://www.qemu.org/docs/master/system/invocation.html
+# some important ones:
+# -s ( enabled GDB in port 1234)
+# -S ( do not start automatically )
+# -device virtio-9p-device,fsdev=fsdev0,mount_tag=host \
+# -fsdev local,id=fsdev0,security_model=none,path=${VIRTFS_DIR}
+VIRTFS_DIR=$(BUILDROOT_DIR)buildroot/output/build
+
 start-qemu-host:
-	@cd $(IMAGES) && ../host/bin/qemu-system-arm \
-	-machine virt,secure=on -cpu cortex-a15 \
-        -bios flash.bin \
-	-smp 1 -s -m 1024 -d unimp \
+	cd $(IMAGES) && ../host/bin/qemu-system-arm \
+	-semihosting-config enable=on,target=native \
+	-s \
+	-machine virt,secure=on \
+	-cpu cortex-a15 \
+	-bios flash.bin \
+	-m 1G \
+	-smp 1 \
+	-d unimp \
 	-serial mon:stdio \
-        -serial telnet:0.0.0.0:54321,server,nowait \
-        -object rng-random,filename=/dev/urandom,id=rng0 \
-        -device virtio-rng-pci,rng=rng0,max-bytes=1024,period=1000 \
-        -device virtio-net-device,netdev=vmnic \
-	-netdev user,id=vmnic \
-	-semihosting-config enable=on,target=native
+	-serial telnet:0.0.0.0:54321,server,nowait \
+	-object rng-random,filename=/dev/urandom,id=rng0 \
+	-device virtio-rng-pci,rng=rng0,max-bytes=1024,period=1000 \
+	-device virtio-net-device,netdev=vmnic \
+	-netdev user,id=vmnic 
 
 .PHONY: docker
 docker:
