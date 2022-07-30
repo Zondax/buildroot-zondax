@@ -1,0 +1,6 @@
+
+
+Zondax TEE ( qemu )
+   - to exit use "CTRL-A + X"
+   - use telnet 127.0.0.1 54321 to access the TEE serial channel
+
