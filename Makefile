@@ -42,7 +42,7 @@ endif
 
 IMAGES=$(BUILDROOT_DIR)/output/images
 
-all:image_dir
+all: image_dir genkeys
 	@cd $(BUILDROOT_DIR) && make all
 
 image_dir:
