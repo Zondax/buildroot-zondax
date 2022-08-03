@@ -5,30 +5,29 @@ jobs:
   build_dk2:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: 'true'
-    - name: Blocked mirror workaround
-      run: echo "1.1.1.1 invisible-mirror.net" | sudo tee -a /etc/hosts
-    - name: Build image
-      run: |
-        pip3 install pycryptodomex
-        ./tools/optee/gen_keys.sh
-        ./tools/uboot/gen_keys.sh
-        ./tools/dk2/generate_keys.sh
-        make git-reset
-        make dk2
+      - uses: actions/checkout@v2
+        with:
+          submodules: "true"
+      - name: Blocked mirror workaround
+        run: echo "1.1.1.1 invisible-mirror.net" | sudo tee -a /etc/hosts
+      - name: Build image
+        run: |
+          pip3 install pycryptodomex
+          make genkeys
+          make git-reset
+          make dk2
 
   build_imx:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: 'true'
-    - name: Blocked mirror workaround
-      run: echo "1.1.1.1 invisible-mirror.net" | sudo tee -a /etc/hosts
-    - name: Build image
-      run: |
-        ./tools/optee/gen_keys.sh
-        make git-reset
-        make imx8mmevk
+      - uses: actions/checkout@v2
+        with:
+          submodules: "true"
+      - name: Blocked mirror workaround
+        run: echo "1.1.1.1 invisible-mirror.net" | sudo tee -a /etc/hosts
+      - name: Build image
+        run: |
+          pip3 install pycryptodomex
+          make genkeys-optee
+          make git-reset
+          make imx8mmevk
