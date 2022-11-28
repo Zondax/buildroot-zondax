@@ -18,9 +18,9 @@ git submodule init
 
 | Command              | Description                  |
 | -------------------- | -----------------------------|
-| `make genkeys_optee` | Generates OPTEE keys(stm/imx)|
-| `make genkeys_uboot` | Generates UBOOT keys(stm)    |
-| `make genkeys_tfa`   | Generates TFA keys(stm)      |
+| `make genkeys-optee` | Generates OPTEE keys(stm/imx)|
+| `make genkeys-uboot` | Generates UBOOT keys(stm)    |
+| `make genkeys-tfa`   | Generates TFA keys(stm)      |
 | `make genkeys`       | Generates all keys           |
 
 These keys will be generated and placed in the corresponding directories (relative to this file),
